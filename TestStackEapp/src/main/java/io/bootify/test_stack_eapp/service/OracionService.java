@@ -3,6 +3,8 @@ package io.bootify.test_stack_eapp.service;
 import io.bootify.test_stack_eapp.domain.Oracion;
 import io.bootify.test_stack_eapp.dto.OracionDTO;
 import io.bootify.test_stack_eapp.repos.OracionRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,10 @@ public class OracionService {
     }
     public Oracion getOracionById(Long id) {
     return oracionRepository.findById(id).orElse(null);
+    }
+    
+    public List<OracionDTO> obtenerTodas() {
+    List<Oracion> oraciones = oracionRepository.findAll();
+    return oraciones.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 }

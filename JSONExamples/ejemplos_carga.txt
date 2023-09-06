@@ -1,0 +1,38 @@
+// Categorias
+{
+    "descripcion": "Descripción de la nueva categoría"
+}
+
+// PalbaraFrase JSON: 
+{
+    "contenido": "apple",
+    "dificultad": "básico",
+    "aprendido": false,
+    "fechaRegistro": "2023-09-05T12:00:00",
+    "usuarioId": 1,
+    "tipoId": 2
+}
+
+// Oracion JSON
+{
+    "texto": "my name is Derlis",
+    "fechaRegistro": "2023-09-05T12:00:00"
+}
+
+// Practica JSON
+{
+    "ultimaFecha": "2023-09-06T14:45:32",
+    "conteo": 5,
+    "usuarioId": 123,  // Suponiendo que ya tienes un usuario con ID 123 en tu base de datos.
+    "palabraFraseId": 456  // Suponiendo que ya tienes una palabra/frase con ID 456 en tu base de datos.
+}
+
+// Significado JSON
+{
+    "id": 1,
+    "descripcion": "Descripción del significado",
+    "fechaRegistro": "2023-09-05T23:46:11",
+    "palabraFraseId": 123,
+    "dateCreated": "2023-09-05T23:46:11.115+00:00",
+    "lastUpdated": "2023-09-05T23:46:11.115+00:00"
+}

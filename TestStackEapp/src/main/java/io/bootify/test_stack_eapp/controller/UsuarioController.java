@@ -10,50 +10,29 @@ package io.bootify.test_stack_eapp.controller;
  */
 import io.bootify.test_stack_eapp.domain.Usuario;
 import io.bootify.test_stack_eapp.dto.UsuarioDTO;
-import io.bootify.test_stack_eapp.repos.UsuarioRepository;
+import io.bootify.test_stack_eapp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import org.springframework.http.ResponseEntity;
-import io.bootify.test_stack_eapp.service.UsuarioService;
-
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
-    @Autowired
-    private final UsuarioService usuarioService;
-    
-    @Autowired
-    public UsuarioController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-    
-    @Autowired
-    private UsuarioRepository usuarioRepository;
 
-   // @GetMapping("/")
-   // public List<Usuario> listarUsuarios() {
-     //  return usuarioRepository.findAll();
-       //return usuarioRepository.obtenerUsuariosOrdenadosPorNombre();
-    //}
+    @Autowired
+    private UsuarioService usuarioService;
 
-    @PostMapping("/")
-    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    @GetMapping
+    public ResponseEntity<List<UsuarioDTO>> getAllUsuarios() {
+        List<UsuarioDTO> usuarios = usuarioService.findAll();
+        return ResponseEntity.ok(usuarios);
     }
-    
-    @GetMapping("/")
-    public ResponseEntity<List<UsuarioDTO>> listarUsuarios() {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        List<UsuarioDTO> usuariosDTO = usuarios.stream()
-                .map(usuarioService::convertToDTO)
-                .collect(Collectors.toList());
-        
-        return ResponseEntity.ok(usuariosDTO);
+
+    @PostMapping
+    public ResponseEntity<Usuario> createUsuario(@RequestBody UsuarioDTO usuarioDTO) {
+        Usuario savedUsuario = usuarioService.save(usuarioDTO);
+        return ResponseEntity.ok(savedUsuario);
     }
-    
-    // Otros métodos para actualizar y eliminar usuarios
 }

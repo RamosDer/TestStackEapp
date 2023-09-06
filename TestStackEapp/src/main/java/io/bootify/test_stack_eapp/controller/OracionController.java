@@ -7,6 +7,7 @@ package io.bootify.test_stack_eapp.controller;
 import io.bootify.test_stack_eapp.dto.OracionDTO;
 import io.bootify.test_stack_eapp.domain.Oracion;
 import io.bootify.test_stack_eapp.service.OracionService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +40,13 @@ public class OracionController {
         oracion = oracionService.guardarOracion(oracion);
         return ResponseEntity.ok(oracion);
     }
+    
+    @GetMapping
+    public ResponseEntity<List<OracionDTO>> getAllOraciones() {
+        List<OracionDTO> oraciones = oracionService.obtenerTodas();
+        return ResponseEntity.ok(oraciones);
+    }
+
 
     // ... otros endpoints
 }

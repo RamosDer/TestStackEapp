@@ -1,49 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package io.bootify.test_stack_eapp.dto;
 
-/**
- *
- * @author Derlis Ramos
- */
-public class UsuarioDTO {
-    private Long id;
-    private String nombre;
-    private String apellido;
-    private String nombreUsuario;
+import io.bootify.test_stack_eapp.domain.Usuario;
 
-    public Long getId() {
-        return id;
+public class UsuarioDTO {
+
+    private Long id;
+    private String nombreUsuario;
+    private String nombre;
+    private String contrasenha;
+    private String apellido;
+    
+    public Long getId() {return id;
+}
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public String getNombreUsuario(String nombreUsuario1) {
-        return nombreUsuario;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public String getContrasenha() {
+        return contrasenha;
+    }
+
+    public void setContrasenha(String contrasenha) {
+        this.contrasenha = contrasenha;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    // Constructores, getters, setters...
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public UsuarioDTO() {
     }
-    
+
+    public UsuarioDTO(Usuario usuario) {
+        this.id = usuario.getId();
+        this.nombreUsuario = usuario.getNombreUsuario();
+        this.nombre = usuario.getNombre();
+        this.contrasenha = usuario.getContrasenha();
+        this.apellido = usuario.getApellido();
+    }
+
+    // ...resto de los getters y setters...
+
 }
